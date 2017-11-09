@@ -1,8 +1,8 @@
 body{
 	margin: 0;
 	font-family: Nexa;
-    font-weight: bold;
-    color: #ffffff;
+        font-weight: bold;
+        color: #ffffff;
 }
 img{
 	width: 100%;
@@ -33,11 +33,11 @@ h1{
 	margin-top: 20px;
 }
 
+
 .menu{
 	width: 19.5%;
 	float: right;
 	margin-top: 75px;
-	/*background-color: green;*/
 }
 
 li.menu{
@@ -45,6 +45,15 @@ li.menu{
 	display: inline;
 	float: none;
 	font-size: 20px;
+}
+
+div li a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+div li a:hover{
+    text-decoration: underline;
 }
 
 .mid{
@@ -80,8 +89,18 @@ li.menu{
 	padding-left: 5%;
 	padding-right: 5%;
 	margin-top: 185px;
-	padding-top: 30px;
+	padding-top: 33px;
 	max-width: 90%;
-	height: 50px;
+	height: 47px;
 	background-color: #fe6103;
+}
+
+img.footer{
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: -12px;
+    padding-top: 0;
+    width: 3%;
+    height: auto;
+    float: right;
 }
