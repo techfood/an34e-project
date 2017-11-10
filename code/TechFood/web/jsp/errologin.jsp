@@ -4,6 +4,7 @@
     <head>
         <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath()%>/css/bootstrap.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="<%=request.getContextPath()%>/Imagens\icon.ico">
         <title>Erro de Login</title>
     </head>
     <body>
