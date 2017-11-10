@@ -10,9 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Usuario;
+import model.Funcionario;
 
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
+@WebServlet(name = "login", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
 
     @Override
@@ -20,24 +20,22 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            out.println("<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\">");
+            Funcionario user = new Funcionario(request.getParameter("login"),request.getParameter("senha"));
             
-            Usuario user = new Usuario(request.getParameter("login"),request.getParameter("senha"));
-            
-            if(user.getLogin().equals("") || user.getSenha().equals("")){
+            if(user.getCpfFunc().equals("") || user.getSenhaFunc().equals("")){
                 
                 request.setAttribute("login", true);
-                request.getRequestDispatcher("./ErroLogin.jsp").forward(request, response);
+                request.getRequestDispatcher("/jsp/errologin.jsp").forward(request, response);
                 
             }else{
                if(user.autentica(user)){
                     request.getSession().setAttribute("usuario", true);
-                    request.getSession().setAttribute("login", user.getLogin());
-                    response.sendRedirect("./Restrito.jsp");
+                    request.getSession().setAttribute("cpf", user.getCpfFunc());
+                    response.sendRedirect(request.getContextPath()+"/jsp/restrito.jsp");
                }else{
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                     request.setAttribute("login", false);
-                    request.getRequestDispatcher("./ErroLogin.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/errologin.jsp").forward(request, response);
                }
             }
         } catch (SQLException ex) {
