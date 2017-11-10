@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath()%>/css/bootstrap.css"/>
+        <link rel="shortcut icon" href="<%=request.getContextPath()%>/Imagens\icon.ico">
         <title>Login</title>
     </head>
     <body>
