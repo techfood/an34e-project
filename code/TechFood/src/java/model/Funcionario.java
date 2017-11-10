@@ -41,7 +41,6 @@ public class Funcionario {
         this.cepFunc = cepFunc;
         this.foneFunc = foneFunc;
     }
-
     
     public boolean autentica(Funcionario user) throws SQLException {
 
@@ -87,6 +86,26 @@ public class Funcionario {
         conn.close();
         db.closeConnection();
         return user;
+    }
+    
+    public boolean deleta(int id) throws SQLException {
+        
+        boolean ok = false;
+        db = new Dbase();
+        conn = db.getConnection();
+        String sql = "delete from funcionario where id_funcionario = ?;";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            ok = true;
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conn.close();
+        db.closeConnection();
+        return ok;
     }
 
     public boolean gravar(Funcionario user) throws SQLException {
@@ -169,11 +188,7 @@ public class Funcionario {
     public String getCpfFunc() {
         return cpfFunc;
     }
-    
-   // public Endereco getEndereco(){
-    //    return endereco;
-   // }
-
+   
     public void setCpfFunc(String cpfFunc) {
         this.cpfFunc = cpfFunc;
     }
@@ -193,8 +208,4 @@ public class Funcionario {
     public void setSenhaFunc(String senhaFunc) {
         this.senhaFunc = senhaFunc;
     }
-    
-    //public void setEndereco(Endereco endereco){
-   //     this.endereco = endereco;
-    //}
 }

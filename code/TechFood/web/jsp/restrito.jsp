@@ -17,18 +17,18 @@
                 <p>Nome: <%= user.getNomeFunc()%></p>
                 <small><a href="<%=request.getContextPath()%>/logout">logout</a></small>
                 <%if(user.getCargoFunc().equalsIgnoreCase("gerente")){%>
-                   <!-- <form action="./Postagem" method = "post" enctype="multipart/form-data">
-                    Adicionar Nova Postagem:<br>
-                    <input type="hidden" name="usuario_id" value="<%=//user.getId()%>"><br>
-                    Titulo:
-                    <input type="text" required="required" name="titulo"/><br><br>
-                    Texto:
-                    <input type="text" required="required" name="texto"><br><br>
-                    Imagem:
-                    <input type="file" name="file">
-                    <input type="submit" value="NOVO">
-                </form>*-->
-                   
+                   <form action="<%=request.getContextPath()%>/criacardapio" method = "post" enctype="multipart/form-data">
+                        Adicionar Cardapio:<br>
+                        Nome:
+                        <input type="text" required="required" name="nomeCard"/><br><br>
+                        Preço
+                        <input type="text" required="required" name="precoCard"/><br><br>
+                        Observação:
+                        <input type="text" required="required" name="obsCard"><br><br>
+                        Imagem:
+                        <input type="file" name="file">
+                        <input type="submit" value="NOVO">
+                    </form>
                 <%}%>
         <%}else{%>
  		
