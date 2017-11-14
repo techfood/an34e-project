@@ -1,5 +1,5 @@
 -- Funcionario 
-insert into Cliente (nome_Funcionario, cpf_Funcionario, cargo_funcionario, senha_funcionario) 
+insert into Funcionario (nome_Funcionario, cpf_Funcionario, cargo_funcionario, senha_funcionario) 
 values ('João Ferreira', '22222222222', 'Funcionario', '123'), ('Rafael Borduchi',  '54321098765', 'Gerente', '321');
 
 -- Mesa
@@ -8,7 +8,7 @@ values (4, 'S', 'N'), (2, 'N', 'S');
 
 -- Produto
 insert into Produto (nome_Produto, preco_Produto, observacoes)
-values ('Pizza 4 Queijos', 25.00, 'Queijo Mussarela, Gorgonzola, Parmesão, Requeijão Caseiro'), ('Coca-Cola Lata', 3.50, );
+values ('Pizza 4 Queijos', 25.00, 'Queijo Mussarela, Gorgonzola, Parmesão, Requeijão Caseiro'), ('Coca-Cola Lata', 3.50);
 
 -- MesaCliente
 insert into MesaCliente (fk_id_Mesa, fk_id_Reserva, hora_pedido, total_consumido, Pago)
