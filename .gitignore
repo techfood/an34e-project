@@ -1,3 +1,7 @@
 /code/TechFood/nbproject/private/
 /code/TechFood/build/
 /code/TechFood/dist/
+code/TechFood/nbproject/project.properties
+code/TechFood/nbproject/ant-deploy.xml
+code/TechFood/nbproject/project.properties
+*.xml

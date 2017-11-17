@@ -93,6 +93,15 @@
   }
 }
 
+.back{
+    margin-top: 10px;
+    width:300px;
+    position:absolute;
+    left:50%;
+    margin-left:-150px;
+    color: #666666;
+}
+
 .bot{
   z-index: 1;
   width: 90%;
