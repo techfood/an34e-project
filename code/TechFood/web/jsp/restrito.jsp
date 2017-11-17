@@ -1,3 +1,4 @@
+<%@page import="model.Cardapio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
@@ -16,7 +17,15 @@
                 user = user.procura(userLogin);%>
                 <p>Nome: <%= user.getNomeFunc()%></p>
                 <small><a href="<%=request.getContextPath()%>/logout">logout</a></small>
-                <%if(user.getCargoFunc().equalsIgnoreCase("gerente")){%>
+                <%Cardapio card = new Cardapio();
+                ArrayList<Cardapio> cardapio;
+                /*if(request.getParameter("termo")!= null){
+                    cardapio = card.pesquisaCardapio(request.getParameter("termo"));
+                }
+                else{
+                    cardapio = card.postUser(user.getId());
+                }*/
+                if(user.getCargoFunc().equalsIgnoreCase("gerente")){%>
                    <form action="<%=request.getContextPath()%>/criacardapio" method = "post" enctype="multipart/form-data">
                         Adicionar Cardapio:<br>
                         Nome:
