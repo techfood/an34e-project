@@ -35,7 +35,7 @@ public class Cardapio {
         boolean ok = false;
         db = new Dbase();
         conn = db.getConnection();
-        String sql = ("delete from produto where id = ?;");
+        String sql = ("delete from produto where id_produto = ?;");
         
         try {
             ps= conn.prepareStatement(sql);
@@ -82,6 +82,23 @@ public class Cardapio {
         String sql = ("select * from produto where nome_Produto like ?;");
         ps = conn.prepareStatement(sql);
         ps.setString(1, "%"+termo+"%");
+        rs = ps.executeQuery();
+        while(rs.next()){
+            obj.add(new Cardapio(rs.getInt("id_Produto"),rs.getString("nome_Produto"),rs.getFloat("preco_Produto"),rs.getString("observacoes"),rs.getString("imagem")));
+        }
+        ps.close();
+        conn.close();
+        db.closeConnection();
+        return obj;
+    }
+    
+    public ArrayList<Cardapio> listaCardapio() throws SQLException{
+        ResultSet rs;
+        ArrayList<Cardapio> obj = new ArrayList();
+        db = new Dbase();
+        conn = db.getConnection();
+        String sql = ("select * from produto;");
+        ps = conn.prepareStatement(sql);
         rs = ps.executeQuery();
         while(rs.next()){
             obj.add(new Cardapio(rs.getInt("id_Produto"),rs.getString("nome_Produto"),rs.getFloat("preco_Produto"),rs.getString("observacoes"),rs.getString("imagem")));
