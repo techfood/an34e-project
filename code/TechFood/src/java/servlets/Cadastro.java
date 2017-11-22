@@ -32,8 +32,6 @@ public class Cadastro extends HttpServlet {
             } else {
                 if (user.gravar(user)) {
                     
-                    request.getSession().setAttribute("usuario", true);
-                    request.getSession().setAttribute("cpf", user.getCpfFunc());
                     response.sendRedirect(request.getContextPath()+"/jsp/restrito.jsp");
                  
                 }
