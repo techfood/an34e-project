@@ -29,87 +29,54 @@
 </nav>
 
 <div class="bot">
-  <div class="card-deck" style="margin-top: 3%;">
-    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; float: left;">
-      <img class="card-img-top" src="<%=request.getContextPath()%>/Imagens\pizza_portuguesa.jpg" alt="Card image cap">
+  <div class="card-deck">
+    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
+      <img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/Imagens\pizza_portuguesa.jpg" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">Pizza Portuguesa</h4>
         <p class="card-text">Pequena - R$30,00<br>Média - R$40,00<br>Grande - R$50,00</p>
       </div>
-      <div class="card-footer">
+      <div class="card-footer" style="background-color: #6a2d08; border-radius: 0;">
         <small class="text-muted">Mussarela, presunto, tomate, ovo, cebola e azeitona</small>
       </div>
     </div>
-    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0;">
-      <img class="card-img-top" src="<%=request.getContextPath()%>/Imagens\pizza_4queijos.jpg" alt="Card image cap">
+    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
+      <img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/Imagens\pizza_4queijos.jpg" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">Pizza 4 Queijos</h4>
         <p class="card-text">Pequena - R$35,00<br>Média - R$45,00<br>Grande - R$55,00</p>
       </div>
-      <div class="card-footer">
+      <div class="card-footer" style="background-color: #6a2d08; border-radius: 0;">
         <small class="text-muted">Queijo margherita, queijo provolone, catupiry, queijo gorgonzola, parmesão ralado, cebola roxa e tomate</small>
       </div>
     </div>
-    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0;">
-      <img class="card-img-top" src="<%=request.getContextPath()%>/Imagens\pizza_calabresa.jpg" alt="Card image cap">
+    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
+      <img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/Imagens\pizza_calabresa.jpg" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">Pizza Calabresa</h4>
         <p class="card-text">Pequena - R$30,00<br>Média - R$40,00<br>Grande - R$50,00</p>
       </div>
-      <div class="card-footer">
+      <div class="card-footer" style="background-color: #6a2d08; border-radius: 0;">
         <small class="text-muted">Linguiça calabresa, cebolas e azeitona</small>
       </div>
     </div>
-    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0;">
-      <img class="card-img-top" src="<%=request.getContextPath()%>/Imagens\pizza_file.jpg" alt="Card image cap">
+    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
+      <img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/Imagens\pizza_file.jpg" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">Pizza Filé ao Alho</h4>
         <p class="card-text">Pequena - R$35,00<br>Média - R$45,00<br>Grande - R$55,00</p>
       </div>
-      <div class="card-footer">
+      <div class="card-footer" style="background-color: #6a2d08; border-radius: 0;">
         <small class="text-muted">Filé mignon, alho, vinho tinto, creme de leite, champignon, mussarela e provolone</small>
       </div>
-    </div>  
-  </div>
-
-<div class="card-deck" style="margin-top: 3%;">
-    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; float: left;">
-      <img class="card-img-top" src="<%=request.getContextPath()%>/Imagens\pizza_portuguesa.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">Pizza Portuguesa</h4>
-        <p class="card-text">Pequena - R$30,00<br>Média - R$40,00<br>Grande - R$50,00</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Mussarela, presunto, tomate, ovo, cebola e azeitona</small>
-      </div>
     </div>
-    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0;">
-      <img class="card-img-top" src="<%=request.getContextPath()%>/Imagens\pizza_4queijos.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">Pizza 4 Queijos</h4>
-        <p class="card-text">Pequena - R$35,00<br>Média - R$45,00<br>Grande - R$55,00</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Queijo margherita, queijo provolone, catupiry, queijo gorgonzola, parmesão ralado, cebola roxa e tomate</small>
-      </div>
-    </div>
-    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0;">
-      <img class="card-img-top" src="<%=request.getContextPath()%>/Imagens\pizza_calabresa.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">Pizza Calabresa</h4>
-        <p class="card-text">Pequena - R$30,00<br>Média - R$40,00<br>Grande - R$50,00</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Linguiça calabresa, cebolas e azeitona</small>
-      </div>
-    </div>
-    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0;">
-      <img class="card-img-top" src="<%=request.getContextPath()%>/Imagens\pizza_file.jpg" alt="Card image cap">
+    <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
+      <img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/Imagens\pizza_file.jpg" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">Pizza Filé ao Alho</h4>
         <p class="card-text">Pequena - R$35,00<br>Média - R$45,00<br>Grande - R$55,00</p>
       </div>
-      <div class="card-footer">
+      <div class="card-footer" style="background-color: #6a2d08; border-radius: 0;">
         <small class="text-muted">Filé mignon, alho, vinho tinto, creme de leite, champignon, mussarela e provolone</small>
       </div>
     </div>  
