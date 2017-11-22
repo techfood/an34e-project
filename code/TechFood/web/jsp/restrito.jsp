@@ -8,10 +8,25 @@
     <head>
         <link rel="stylesheet" type ="text/css" href="<%=request.getContextPath()%>/css/bootstrap.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="<%=request.getContextPath()%>/Imagens\icon.ico">
         <title>Area Restrita</title>
     </head>
     <body>
-        <%if(session.getAttribute("cpf")!= null && session.getAttribute("usuario").equals(new Boolean(true))){
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #fe6103; height: 110px; padding-left: 5%;padding-right: 5%; padding-top: 20px; z-index: 2;">
+                        <a class="navbar-brand" href="./index.html"><img src="<%=request.getContextPath()%>/Imagens\Logo.png"></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="font-size: 20px; margin-top: 40px;">
+                            <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="<%=request.getContextPath()%>/index.html">Home</a>
+                            <a class="nav-item nav-link" href="./cardapio.jsp">Cardápio</a>
+                            <a class="nav-item nav-link active" href="./login.jsp">Login <span class="sr-only">(current)</span></a>
+                            </div>
+                        </div>
+                    </nav>
+                            
+            <%if(session.getAttribute("cpf")!= null && session.getAttribute("usuario").equals(new Boolean(true))){
                 String userLogin = (String) session.getAttribute("cpf");
                 Funcionario user = new Funcionario();
                 user = user.procura(userLogin);%>
@@ -31,21 +46,8 @@
                         <input type="file" name="file">
                         <input type="submit" value="NOVO">
                     </form>
-                        
-                        
-                    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #fe6103; height: 110px; padding-left: 5%;padding-right: 5%; padding-top: 20px; z-index: 2;">
-                        <a class="navbar-brand" href="./index.html"><img src="<%=request.getContextPath()%>/Imagens\Logo.png"></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                              <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="font-size: 20px; margin-top: 40px;">
-                            <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="<%=request.getContextPath()%>/index.html">Home</a>
-                            <a class="nav-item nav-link" href="./cardapio.jsp">Cardápio</a>
-                            <a class="nav-item nav-link active" href="./login.jsp">Login <span class="sr-only">(current)</span></a>
-                            </div>
-                        </div>
-                    </nav>
+                            
+                            
                     <div class="back">   
                         <h1 style="color: #ffffff">Cadastre-se</h1>
                         <form action="<%=request.getContextPath()%>/cadastro" method="POST">
