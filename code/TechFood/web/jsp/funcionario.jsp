@@ -74,6 +74,7 @@
 
 </div>
 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<%=request.getContextPath()%>/js/jquery-3.2.1.slim.min.js"></script>
