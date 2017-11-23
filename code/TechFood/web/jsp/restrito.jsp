@@ -51,35 +51,37 @@
                         <form action="<%=request.getContextPath()%>/cadastro" method="POST">
                             <div class="form-group">
                                 <label for="nome" name="nome">Nome</label>
-                                <input type="text" class="form-control" name="nome" placeholder="Digite o nome do funcionário">
+                                <input type="text" class="form-control" pattern="[a-zA-Z\s]+$" required name="nome" placeholder="Digite o nome ">
                             </div>
                             <div class="form-group">
                                 <label for="cpf" name="cpf">CPF</label>
-                                <input type="text" class="form-control" name="cpf" placeholder="Digite o CPF do funcionário">
+                                <input type="text" class="form-control" pattern="[0-9]+$" required name="cpf" placeholder="Digite o CPF">
                             </div>
                             <div class="form-group">
                                 <label for="cargo" name="cargo">Cargo</label>
-                                <input type="text" class="form-control" name="cargo" placeholder="Digite o cargo do funcionário">
+                                <input type="text" class="form-control" pattern="[a-z\s]+$" required name="cargo" placeholder="Digite o cargo do funcionário">
                             </div>
                             <div class="form-group">
                                 <label for="password" name="senha">Senha</label>
-                                <input type="password" class="form-control" name="senha" placeholder="Digite a senha do funcionário">
+                                <input type="password" class="form-control" required name="senha" placeholder="Digite a senha">
                             </div>
                             <div class="form-group">
                                 <label for="rua" name="rua">Endereço</label>
-                                <input type="text" class="form-control" name="rua" placeholder="Digite o endereço do funcionário">
+                                <input type="text" class="form-control" required name="rua" placeholder="Digite o endereço">
                             </div>
                             <div class="form-group">
                                 <label for="cidade" name="cidade">Cidade</label>
-                                <input type="text" class="form-control" name="cidade" placeholder="Digite a cidade do funcionário">
+                                <input type="text" class="form-control" pattern="[a-zA-Z\s]+$" required name="cidade" placeholder="Digite a cidade">
                             </div>
                             <div class="form-group">
                                 <label for="cep" name="cep">CEP</label>
-                                <input type="text" class="form-control" name="cep" placeholder="Digite o CEP do funcionário">
+                                <input type="text" class="form-control" pattern="[0-9]+$" required
+                                       name="cep" placeholder="Digite o CEP ">
                             </div>
                             <div class="form-group">
                                 <label for="fone" name="fone">Telefone</label>
-                                <input type="text" class="form-control" name="fone" placeholder="Digite o telefone do funcionário">
+                                <input type="text" pattern="[0-9]+$" required 
+                                       class="form-control" name="fone" placeholder="Digite o telefone">
                             </div>
                             <div class="form-check"></div>
                             <button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Cadastrar</button>

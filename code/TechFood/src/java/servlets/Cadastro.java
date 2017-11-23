@@ -27,7 +27,7 @@ public class Cadastro extends HttpServlet {
             if (user.procura(user.getCpfFunc()) != null ) {
                 
                 request.setAttribute("cadastro", false);
-                request.getRequestDispatcher("/jsp/errocadastro.jsp").forward(request, response);
+                request.getRequestDispatcher("/jsp/restrito.jsp").forward(request, response);
             
             } else {
                 if (user.gravar(user)) {
