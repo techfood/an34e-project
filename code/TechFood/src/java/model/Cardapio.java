@@ -55,7 +55,7 @@ public class Cardapio {
         boolean ok = false;
         db = new Dbase();
         conn = db.getConnection();
-        String sql = "insert into produto(nome_Produto,preco_Produto,observacoes,imagem) values (?,?,?,?);";
+        String sql = "insert into produto(nome_produto,preco_produto,observacoes,imagem) values (?,?,?,?);";
         
         try {
             ps= conn.prepareStatement(sql);

@@ -102,6 +102,13 @@
     color: #666666;
 }
 
+#teste { position:relative; }
+#upload { position:absolute; top:0;left:0; border:1px solid #ff0000; opacity:0.01; z-index:1; }
+#texto { border:0px; border-radius:4px; padding:5px; }
+#botao { border:1px solid #dedede; background:#989898; color:#ffffff; border-radius:4px; padding:5px;}
+
+
+
 .bot{
   z-index: 1;
   width: 90%;
