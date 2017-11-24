@@ -405,25 +405,19 @@
         '<form action="<%=request.getContextPath()%>/criacardapio" method = "POST" enctype="multipart/form-data">'+
             '<div class="form-group">'+
                 '<label for="nomeCard" name="nomeCard">Nome</label>'+
-                '<input type="text" class="form-control" name="nomeCard" placeholder="Digite o nome do produto">'+
+                '<input type="text" required="required" class="form-control" name="nomeCard" placeholder="Digite o nome do produto">'+
             '</div>'+
             '<div class="form-group">'+
                 '<label for="precoCard" name="precoCard">Preço</label>'+
-                '<input type="text" class="form-control" name="precoCard" placeholder="Digite o preço do produto">'+
+                '<input type="text" pattern="[0-9]+$" required class="form-control" name="precoCard" placeholder="Digite o preço do produto">'+
             '</div>'+
             '<div class="form-group">'+
                 '<label for="obsCard" name="obsCard">Observação</label>'+
-                '<input type="text" class="form-control" name="obsCard" placeholder="Digite a observação do produto">'+
+                '<input type="text" required="required" class="form-control" name="obsCard" placeholder="Digite a observação do produto">'+
             '</div>'+
             '<div class="form-group">'+
                '<label for="file" name="file">Imagem</label>'+
-                <%-- '<input type="file" class="form-control-file" id="exampleFormControlFile1">'+--%>
-                 '<div id="teste">'+
-                
-                '<input type="file" multiple="multiple" id="upload" name="file"/>'+
-                '<button type="submit" class="btn btn-primary" id="botao" style="background-color: #fe6103; border: none">Selecionar arquivo</button>'+
-                '<label for="file" id="texto" name="file">Nenhum arquivo selecionado</label>'+
-            '</div>'+
+               '<input type="file" required="required" name="file"/>'+
             '</div>'+
             '<button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Cadastrar</button>'+
         '</form>'+
@@ -482,7 +476,7 @@
             '</div>'+
             '<div class="form-group">'+
                 '<label for="idFunc" name="lidFunc">Funcionário</label>'+
-                '<input type="text" class="form-control" name="idFunc" placeholder="Digite o cpf do funcionário">'+
+                '<input type="text" class="form-control" name="idFunc" placeholder="Digite o id do funcionário">'+
             '</div>'+
             '<div class="form-group">'+
                 '<label for="obser" name="lobser">Observação</label>'+
@@ -518,10 +512,10 @@
         '<form action="<%=request.getContextPath()%>/mesainsere" method="post">'+
             '<div class="form-group">'+
                 '<label for="numMesa" name="lnumMesa">Número</label>'+
-                '<input type="text" class="form-control" name="nummesa" placeholder="Digite o número da mesa">'+
+                '<input type="text" class="form-control" name="numMesa" placeholder="Digite o número da mesa">'+
             '</div>'+
             '<div class="form-group">'+
-                '<label for="lugarMesa" name="llugarMesa">Quantidade de lugares</label>'+
+                '<label for="lugarMesa" name="lugarMesa">Quantidade de lugares</label>'+
                 '<input type="text" class="form-control" name="lugarMesa" placeholder="Digite a quantidade de lugares da mesa">'+
             '</div>'+
             '<button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Cadastrar</button>'+
@@ -553,7 +547,7 @@ function cadMesa() {
 }
     </script>
     
-    <script>
+ <%--   <script>
     $(function(){
     $('#upload').on('change',function(){
         var numArquivos = $(this).get(0).files.length;
@@ -565,7 +559,7 @@ function cadMesa() {
     });
 });
   </script>
-    
+--%>    
 
     
   </body>
