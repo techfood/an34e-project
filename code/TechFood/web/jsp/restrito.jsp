@@ -30,6 +30,7 @@
             <%if(session.getAttribute("cpf")!= null && session.getAttribute("usuario").equals(new Boolean(true))){
                 String userLogin = (String) session.getAttribute("cpf");
                 Funcionario user = new Funcionario();
+                
                 user = user.procura(userLogin);%>
                 <p>Nome: <%= user.getNomeFunc()%></p>
                 <small><a href="<%=request.getContextPath()%>/logout">logout</a></small>

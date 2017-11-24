@@ -32,7 +32,7 @@ public class PedidoDeleta extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/jsp/restrito.jsp");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PedidoInsere.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PedidoDeleta.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }

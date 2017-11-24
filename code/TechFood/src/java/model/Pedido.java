@@ -17,6 +17,7 @@ public class Pedido {
     private int idFunc;
     private int quantidade;
     private String obser;
+    private float gasto;
     private Connection conn = null;
     private Dbase db;
     private PreparedStatement ps;
@@ -24,6 +25,11 @@ public class Pedido {
      public Pedido() {
     }
 
+    public Pedido(int idMesa, float gasto) {
+        this.idMesa = idMesa;
+        this.gasto = gasto;
+    }
+    
     public Pedido(int idPedido, int idCardapio, int idMesa, int idFunc, int quantidade, String obser) {
         this.idPedido = idPedido;
         this.idCardapio = idCardapio;
@@ -41,17 +47,55 @@ public class Pedido {
         
         try {
             ps= conn.prepareStatement(sql);
-            //ps.setInt(1, this.getIdMesa());
+            
             ps.setInt(1, this.getIdCardapio());
             ps.setInt(2, this.getIdMesa());
             ps.setInt(3, this.getIdFunc());
-            //ps.setInt(5, this.getQuantidade());
+            //ps.setInt(4, this.getQuantidade());
             ps.setString(4, this.getObser());
             ps.execute();
             ok = true;
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(Cardapio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conn.close();
+        db.closeConnection();
+        return ok;
+    }
+    
+    public ArrayList<Pedido> totalGasto(int mesa) throws SQLException{ // faz um array list das postagens no banco
+        ResultSet rs;
+        ArrayList<Pedido> obj = new ArrayList();
+        db = new Dbase();
+        conn = db.getConnection();
+        String sql = ("select fk_id_mesa, sum(preco_produto) as conta from produto pr join pedido pe on "
+                + "pr.id_produto = pe.fk_id_produto where pe.fk_id_mesa = ? group by fk_id_mesa;");
+        ps = conn.prepareStatement(sql);
+        ps.setInt(1, mesa);
+        rs = ps.executeQuery();
+        while(rs.next()){
+            obj.add(new Pedido(rs.getInt("fk_id_mesa"),rs.getFloat("conta")));
+        }
+        ps.close();
+        conn.close();
+        db.closeConnection();
+        return obj;
+    }
+    
+    public boolean limpaMesa(int mesaLimpa) throws SQLException{
+        boolean ok = false;
+        db = new Dbase();
+        conn = db.getConnection();
+        String sql = ("delete from pedido where fk_id_mesa = ?;");
+        try {
+            ps= conn.prepareStatement(sql);
+            ps.setInt(1, mesaLimpa);
+            ps.execute();
+            ok = true;
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
         }
         conn.close();
         db.closeConnection();
@@ -95,6 +139,14 @@ public class Pedido {
         return obj;
     }
     
+    public float getGasto() {
+        return gasto;
+    }
+
+    public void setGasto(float gasto) {
+        this.gasto = gasto;
+    }
+
     public int getIdPedido() {
         return idPedido;
     }
