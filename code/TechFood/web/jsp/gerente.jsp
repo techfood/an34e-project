@@ -1,13 +1,17 @@
 <%@page import="model.Cardapio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Funcionario"%>
+<%@page import="model.Pedido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%Cardapio card = new Cardapio();
   ArrayList<Cardapio> cardapio;
   cardapio = card.listaCardapio();%>
+  
+<%Pedido pedi = new Pedido();
+  ArrayList<Pedido> pedido;
+  pedido = pedi.pedidoLista();%>
 
-<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
   <head>
@@ -119,6 +123,8 @@
                     <a class="dropdown-item" href="#">Excluir</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Fechar conta</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" onclick="cadMesa()">Cadastrar mesa</a>
                   </div>
                 </li>
             </ul>
@@ -133,8 +139,8 @@
                 <li class="nav-item dropdown nav-dark">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size: 1.5rem; color: #ffffff">PEDIDO</a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Novo</a>
-                    <a class="dropdown-item" href="#">Consultar</a>
+                    <a class="dropdown-item" href="#" onclick="cadPed()">Novo</a>
+                    <a class="dropdown-item" href="#" onclick="consPed()">Consultar</a>
                     <a class="dropdown-item" href="#">Editar</a>
                     <a class="dropdown-item" href="#">Excluir</a>
                   </div>
@@ -293,6 +299,65 @@
       '</div>'+ 
      '<%}%>'+         
         '</div>';
+
+        var pedCad = '<div class="back">'+
+    '<h2 style="color: #ffffff">Realizar pedido</h2>'+
+        '<form action="<%=request.getContextPath()%>/pedidoinsere" method="post">'+
+            '<div class="form-group">'+
+                '<label for="idMesa" name="lidMesa">Mesa</label>'+
+                '<input type="text" class="form-control" name="idMesa" placeholder="Digite o número da mesa">'+
+            '</div>'+
+            '<div class="form-group">'+
+                '<label for="idCardapio" name="lidCardapio">Produto</label>'+
+                '<input type="text" class="form-control" name="idCardapio" placeholder="Digite o código do produto">'+
+            '</div>'+
+            '<div class="form-group">'+
+                '<label for="idFunc" name="lidFunc">Funcionário</label>'+
+                '<input type="text" class="form-control" name="idFunc" placeholder="Digite o cpf do funcionário">'+
+            '</div>'+
+            '<div class="form-group">'+
+                '<label for="obser" name="lobser">Observação</label>'+
+                '<input type="text" class="form-control" name="obser" placeholder="Digite a observação do pedido">'+
+            '</div>'+
+            '<button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Pedir</button>'+
+        '</form>'+
+'</div>';
+
+        var pedCons = '<div class="card-deck">'+
+        '<%for(Pedido cadaPedido : pedido){%>'+
+     '<div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">'+ 
+        '<div class="card-body">'+
+          '<h4 class="card-title">Produto <%= cadaPedido.getIdCardapio()%> | Pedido nº <%= cadaPedido.getIdPedido()%></h4>'+
+          '<p class="card-text">Mesa <%= cadaPedido.getIdMesa()%></p>'+
+          '<p class="card-text">Funcionario <%= cadaPedido.getIdFunc()%></p>'+
+        '</div>'+       
+       '<div class="card-footer" style="background-color: #6a2d08; border-radius: 0;">'+
+          '<small class="text-muted"><%= cadaPedido.getObser()%></small>'+
+        '</div>'+
+        '<div class="back" style="margin-left: 15%;">'+       
+            '<form action="<%=request.getContextPath()%>/pedidodeleta" method="post">'+
+               '<input type="hidden" name="idPedido" value="<%= cadaPedido.getIdPedido()%>">'+
+               '<button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Cancelar</button>'+
+            '</form>'+
+        '</div>'+
+      '</div>'+
+      '<%}%>'+
+    '</div>';
+
+        var mesaCad = '<div class="back">'+
+    '<h2 style="color: #ffffff">Cadastrar mesa</h2>'+
+        '<form action="<%=request.getContextPath()%>/mesainsere" method="post">'+
+            '<div class="form-group">'+
+                '<label for="numMesa" name="lnumMesa">Número</label>'+
+                '<input type="text" class="form-control" name="nummesa" placeholder="Digite o número da mesa">'+
+            '</div>'+
+            '<div class="form-group">'+
+                '<label for="lugarMesa" name="llugarMesa">Quantidade de lugares</label>'+
+                '<input type="text" class="form-control" name="lugarMesa" placeholder="Digite a quantidade de lugares da mesa">'+
+            '</div>'+
+            '<button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Cadastrar</button>'+
+        '</form>'+
+'</div>';
         
         
 function cadFunc() {
@@ -306,6 +371,16 @@ function consCardG() {
 }
 function consCard() {
     document.getElementById("campo").innerHTML = cardCons;
+}
+function cadPed() {
+    document.getElementById("campo").innerHTML = pedCad;
+}
+function consPed() {
+    document.getElementById("campo").innerHTML = pedCons;
+}
+
+function cadMesa() {
+    document.getElementById("campo").innerHTML = mesaCad;
 }
     </script>
     
