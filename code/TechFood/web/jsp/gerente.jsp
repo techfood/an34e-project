@@ -28,7 +28,7 @@
                 String userLogin = (String) session.getAttribute("cpf");
                 Funcionario user = new Funcionario();
                 user = user.procura(userLogin);%>
-    
+                    
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #fe6103; height: 110px; padding-left: 5%;padding-right: 5%; padding-top: 20px; z-index: 2;">
   <a class="navbar-brand" href="<%=request.getContextPath()%>/index.html"><img src="<%=request.getContextPath()%>/Imagens\Logo.png"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +50,9 @@
       
 <div class="bot">
   <div class="card-deck">
+      
+    <%if(user.getCargoFunc().equalsIgnoreCase("gerente")){%>
+      
     <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
       <img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/Imagens\user.png" alt="Card image cap">
       <div class="card-body">
@@ -59,7 +62,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size: 1.5rem; color: #ffffff">FUNCIONÁRIO</a>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="#" onclick="cadFunc()">Novo</a>
-                    <a class="dropdown-item" href="#" onclick="FuncCons()">Consultar</a>
+                    <a class="dropdown-item" href="#">Consultar</a>
                     <a class="dropdown-item" href="#">Editar</a>
                     <a class="dropdown-item" href="#">Excluir</a>
                   </div>
@@ -77,7 +80,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size: 1.5rem; color: #ffffff">CARDÁPIO</a>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="#" onclick="cadCard()">Novo</a>
-                    <a class="dropdown-item" href="#" onclick="consCard()">Consultar</a>
+                    <a class="dropdown-item" href="#" onclick="consCardG()">Consultar</a>
                     <a class="dropdown-item" href="#">Editar</a>
                     <a class="dropdown-item" href="#">Excluir</a>
                   </div>
@@ -85,7 +88,25 @@
             </ul>
       </div>
       </div>
-          <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
+      
+      <%}else{%>
+      
+      <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
+      <img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/Imagens\cardapio.png" alt="Card image cap">
+      <div class="card-body">
+        <div class="dropdown-divider"></div>
+            <ul class="nav">
+                <li class="nav-item dropdown nav-dark">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size: 1.5rem; color: #ffffff">CARDÁPIO</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" onclick="consCard()">Consultar</a>
+                  </div>
+                </li>
+            </ul>
+      </div>
+      </div>
+    <%}%>  
+      <div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">
       <img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/Imagens\mesa.png" alt="Card image cap">
       <div class="card-body">
         <div class="dropdown-divider"></div>
@@ -121,13 +142,15 @@
             </ul>
       </div>
       </div>
-    </div>
+    </div> 
+      <div class="bot" id="campo" style="margin-left: 0; margin-right: 0; width: 100%;"></div> 
 </div>
-      
-<div class="bot" id="campo"></div>
+     
 
+    
 <%}else{%>
- 		NÃO ESTA LOGADO
+        ERRO! Usuário não logado<br>
+  <a href="./login.jsp">Efetuar login<span class="sr-only">(current)</span></a>
         <% } %> 
 <%--
 <div class="bot">
@@ -162,47 +185,47 @@
     <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
     
     <script>
-        var funcCad = '<div class="back" style="margin-top: 350px;">'+   
+        var funcCad = '<div class="back">'+   
                         '<h2 style="color: #ffffff">Cadastrar funcionário</h2>'+ 
-                        '<form action="<%=request.getContextPath()%>/cadastro" method="POST">'+ 
-                            '<div class="form-group">'+ 
-                                '<label for="nome" name="nome">Nome</label>'+ 
-                                '<input type="text" class="form-control" name="nome" placeholder="Digite o nome do funcionário">'+ 
-                            '</div>'+ 
-                            '<div class="form-group">'+ 
-                                '<label for="cpf" name="cpf">CPF</label>'+ 
-                                '<input type="text" class="form-control" name="cpf" placeholder="Digite o CPF do funcionário">'+ 
-                            '</div>'+ 
-                            '<div class="form-group">'+ 
-                                '<label for="cargo" name="cargo">Cargo</label>'+ 
-                                '<input type="text" class="form-control" name="cargo" placeholder="Digite o cargo do funcionário">'+ 
-                            '</div>'+ 
-                            '<div class="form-group">'+ 
-                                '<label for="password" name="senha">Senha</label>'+ 
-                                '<input type="password" class="form-control" name="senha" placeholder="Digite a senha do funcionário">'+ 
-                            '</div>'+ 
-                            '<div class="form-group">'+ 
-                                '<label for="rua" name="rua">Endereço</label>'+ 
-                                '<input type="text" class="form-control" name="rua" placeholder="Digite o endereço do funcionário">'+ 
-                            '</div>'+ 
-                            '<div class="form-group">'+ 
-                                '<label for="cidade" name="cidade">Cidade</label>'+ 
-                                '<input type="text" class="form-control" name="cidade" placeholder="Digite a cidade do funcionário">'+ 
-                            '</div>'+ 
-                            '<div class="form-group">'+ 
-                                '<label for="cep" name="cep">CEP</label>'+ 
-                                '<input type="text" class="form-control" name="cep" placeholder="Digite o CEP do funcionário">'+ 
-                            '</div>'+ 
-                            '<div class="form-group">'+ 
-                                '<label for="fone" name="fone">Telefone</label>'+ 
-                                '<input type="text" class="form-control" name="fone" placeholder="Digite o telefone do funcionário">'+ 
-                            '</div>'+ 
-                            '<div class="form-check"></div>'+ 
-                            '<button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Cadastrar</button>'+ 
+                        '<form action="<%=request.getContextPath()%>/cadastro" method="POST">'+
+                            '<div class="form-group">'+
+                                '<label for="nome" name="nome">Nome</label>'+
+                                '<input type="text" class="form-control" pattern="[a-zA-Z\s]+$" required name="nome" placeholder="Digite o nome ">'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="cpf" name="cpf">CPF</label>'+
+                                '<input type="text" class="form-control" pattern="[0-9]+$" required name="cpf" placeholder="Digite o CPF">'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="cargo" name="cargo">Cargo</label>'+
+                                '<input type="text" class="form-control" pattern="[a-z\s]+$" required name="cargo" placeholder="Digite o cargo do funcionário">'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="password" name="senha">Senha</label>'+
+                                '<input type="password" class="form-control" required name="senha" placeholder="Digite a senha">'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="rua" name="rua">Endereço</label>'+
+                                '<input type="text" class="form-control" required name="rua" placeholder="Digite o endereço">'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="cidade" name="cidade">Cidade</label>'+
+                                '<input type="text" class="form-control" pattern="[a-zA-Z\s]+$" required name="cidade" placeholder="Digite a cidade">'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="cep" name="cep">CEP</label>'+
+                                '<input type="text" class="form-control" pattern="[0-9]+$" required name="cep" placeholder="Digite o CEP ">'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="fone" name="fone">Telefone</label>'+
+                                '<input type="text" class="form-control" pattern="[0-9]+$" required name="fone" placeholder="Digite o telefone">'+
+                            '</div>'+
+                            '<div class="form-check"></div>'+
+                            '<button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Cadastrar</button>'+
                         '</form>'+ 
                     '</div>';
             
-        var cardCad = '<div class="back" style="margin-top: 350px;">'+
+        var cardCad = '<div class="back">'+
     '<h2 style="color: #ffffff">Cadastrar cardápio</h2>'+
         '<form action="<%=request.getContextPath()%>/criacardapio" method = "POST" enctype="multipart/form-data">'+
             '<div class="form-group">'+
@@ -231,7 +254,7 @@
         '</form>'+
 '</div>'; 
 
-        var cardCons = '<div class="card-deck" style="margin-top: 350px;">'+
+        var cardConsG = '<div class="card-deck">'+
         '<%for(Cardapio cadaPost : cardapio){%>'+
      '<div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">'+
        '<%if(!cadaPost.getImagemCard().equals("")){%>'+  
@@ -253,6 +276,23 @@
       '</div>'+ 
      '<%}%>'+         
         '</div>';
+
+        var cardCons = '<div class="card-deck">'+
+        '<%for(Cardapio cadaPost : cardapio){%>'+
+     '<div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">'+
+       '<%if(!cadaPost.getImagemCard().equals("")){%>'+  
+        '<img class="card-img-top" style="border-radius: 0;" src="<%=request.getContextPath()%>/<%=cadaPost.getImagemCard()%>" alt="Card image cap">'+
+       '<% }%>'+ 
+        '<div class="card-body">'+
+          '<h4 class="card-title"><%= cadaPost.getNomeCard()%></h4>'+
+          '<p class="card-text">R$ <%= cadaPost.getPrecoCard()%></p>'+
+        '</div>'+       
+       '<div class="card-footer" style="background-color: #6a2d08; border-radius: 0;">'+
+          '<small class="text-muted"><%= cadaPost.getObsCard()%></small>'+
+        '</div>'+
+      '</div>'+ 
+     '<%}%>'+         
+        '</div>';
         
         
 function cadFunc() {
@@ -260,6 +300,9 @@ function cadFunc() {
 }
 function cadCard() {
     document.getElementById("campo").innerHTML = cardCad;
+}
+function consCardG() {
+    document.getElementById("campo").innerHTML = cardConsG;
 }
 function consCard() {
     document.getElementById("campo").innerHTML = cardCons;
@@ -271,13 +314,15 @@ function consCard() {
     $('#upload').on('change',function(){
         var numArquivos = $(this).get(0).files.length;
         if ( numArquivos > 1 ) {
-	        $('#texto').val( numArquivos+' arquivos selecionados' );
+          $('#texto').val( numArquivos+' arquivos selecionados' );
         } else {
-	        $('#texto').val( $(this).val() );
+          $('#texto').val( $(this).val() );
         }
     });
 });
-	</script>
+  </script>
+    
+
     
   </body>
-</html>
+</html> 
