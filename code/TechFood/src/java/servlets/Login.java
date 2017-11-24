@@ -31,7 +31,7 @@ public class Login extends HttpServlet {
                if(user.autentica(user)){
                     request.getSession().setAttribute("usuario", true);
                     request.getSession().setAttribute("cpf", user.getCpfFunc());
-                    response.sendRedirect(request.getContextPath()+"/jsp/restrito.jsp");
+                    response.sendRedirect(request.getContextPath()+"/jsp/gerente.jsp");
                }else{
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                     request.setAttribute("login", false);
