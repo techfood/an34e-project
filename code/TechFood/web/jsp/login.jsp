@@ -25,11 +25,11 @@
           <form action="<%=request.getContextPath()%>/login" method="POST">
             <div class="form-group">
               <label for="login" name="login">Login</label>
-              <input type="text" class="form-control" name="login" placeholder="Digite seu login">
+              <input type="text" class="form-control" required name="login" placeholder="Digite seu login">
             </div>
             <div class="form-group">
               <label for="password" name="senha">Senha</label>
-              <input type="password" class="form-control" name="senha" placeholder="Digite sua senha">
+              <input type="password" class="form-control" required name="senha" placeholder="Digite sua senha">
             </div>
             <div class="form-check">
             </div>
