@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
             if(user.getCpfFunc().equals("") || user.getSenhaFunc().equals("")){
                 
                 request.setAttribute("login", true);
-                request.getRequestDispatcher("/jsp/errologin.jsp").forward(request, response);
+                request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
                 
             }else{
                if(user.autentica(user)){
@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
                }else{
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                     request.setAttribute("login", false);
-                    request.getRequestDispatcher("/jsp/errologin.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
                }
             }
         } catch (SQLException ex) {

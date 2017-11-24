@@ -25,16 +25,18 @@ public class Mesa {
         this.lugaresMesa = lugaresMesa;
     }
     
-    public boolean inserirMesa() throws SQLException{//grava o post no banco de dados
+    public boolean mesaInsere(Mesa cria) throws SQLException{//grava o post no banco de dados
         boolean ok = false;
         db = new Dbase();
         conn = db.getConnection();
-        String sql = "insert into mesa(id_Mesa,lugares_Mesa) values (?,?);";
+        String sql = "insert into mesa(id_Mesa,lugares_Mesa) values (?,?);"
+                + "insert into mesaCliente (fk_id_mesa) values(?);";
         
         try {
             ps= conn.prepareStatement(sql);
-            ps.setInt(1, this.getIdMesa());
-            ps.setInt(2, this.getLugaresMesa());
+            ps.setInt(1, cria.getIdMesa());
+            ps.setInt(2, cria.getLugaresMesa());
+            ps.setInt(3, cria.getIdMesa());
             ps.execute();
             ok = true;
             ps.close();
@@ -46,7 +48,7 @@ public class Mesa {
         return ok;
     }
 
-    public boolean deletaMesa(int idMesa) throws SQLException{
+    public boolean mesaDeleta(Mesa deleta) throws SQLException{
         boolean ok = false;
         db = new Dbase();
         conn = db.getConnection();
@@ -54,7 +56,7 @@ public class Mesa {
         
         try {
             ps= conn.prepareStatement(sql);
-            ps.setInt(1, idMesa);
+            ps.setInt(1, deleta.getIdMesa());
             ps.execute();
             ok = true;
             ps.close();

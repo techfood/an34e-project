@@ -1,3 +1,4 @@
+<%@page import="model.Pedido"%>
 <%@page import="model.Cardapio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Funcionario"%>
@@ -24,7 +25,7 @@
                             <a class="nav-item nav-link active" href="./login.jsp">Login <span class="sr-only">(current)</span></a>
                             </div>
                         </div>
-                    </nav>
+            </nav>
                             
             <%if(session.getAttribute("cpf")!= null && session.getAttribute("usuario").equals(new Boolean(true))){
                 String userLogin = (String) session.getAttribute("cpf");
@@ -39,7 +40,7 @@
                         Nome:
                         <input type="text" required="required" name="nomeCard"/><br><br>
                         Preço
-                        <input type="text" required="required" name="precoCard"/><br><br>
+                        <input type="text" pattern="[0-9]+$" required name="precoCard"/><br><br>
                         Observação:
                         <input type="text" required="required" name="obsCard"><br><br>
                         Imagem:
@@ -90,7 +91,6 @@
                         </form>
                     </div>
                         
-                       
                         
                     <%Cardapio card = new Cardapio();
                     ArrayList<Cardapio> cardapio;
@@ -111,6 +111,12 @@
                             </form>
                         </div>
                     <%}%>
+                    <form action="<%=request.getContextPath()%>/mesainsere" method="post">
+                        <p>Cria Mesa</p>
+                        <p>Numero Mesa: <input type="text" name="numMesa"></p>
+                        <p>Numero Lugar: <input type="text" name="lugarMesa">
+                        <input value="OK" type="submit"></p>
+                    </form>    
                 <%}else{%>
                     <%Cardapio card = new Cardapio();
                     ArrayList<Cardapio> cardapio;
@@ -126,9 +132,36 @@
                             <p>Preço: <%= cadaPost.getPrecoCard()%></p>
                         </div>
                     <%}%>
-                <%}%>   
-        <%}else{%>
+                <%}%>
+                <form action="<%=request.getContextPath()%>/pedidoinsere" method="post">
+                    Numero Mesa: <input type="text" name="idMesa">
+                    <br>
+                    Numero Cardapio: <input type="text" name="idCardapio">
+                    <br>
+                    Numero Funcionario: <input name="idFunc" value="<%= user.getIdFunc()%>">
+                    <br>
+                    Observações: <input type="text" name="obser">
+                    <br>
+                    <input value="PEDIR" type="submit">
+                </form>
+                <%Pedido pedi = new Pedido();
+                ArrayList<Pedido> pedido;
+                pedido = pedi.pedidoLista();%>
+                <%for(Pedido cadaPedido : pedido){%>
+                    <div>
+                        <p>Numero Pedido: <%= cadaPedido.getIdPedido()%></p>
+                        <p>Numero Cardapio <%= cadaPedido.getIdCardapio()%></p>
+                        <p>Numero Mesa <%= cadaPedido.getIdMesa()%></p>
+                        <p>Numero Funcionario <%= cadaPedido.getIdFunc()%></p>
+                        <p>Observação: <%= cadaPedido.getObser()%></p>
+                        <form action="<%=request.getContextPath()%>/pedidodeleta" method="post">
+                            <input type="hidden" name="idPedido" value="<%= cadaPedido.getIdPedido()%>">
+                            <input value="Cancela" type="submit">
+                        </form>
+                    </div>
+                <%}%>
+            <%}else{%>
  		NÃO ESTA LOGADO
-        <% } %>    
+            <% } %>    
     </body>
 </html>

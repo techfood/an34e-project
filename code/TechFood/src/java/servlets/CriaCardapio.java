@@ -29,7 +29,7 @@ public class CriaCardapio extends HttpServlet {
         Boolean ok = true;
         
         String oldFileName = Paths.get(userFile.getSubmittedFileName()).getFileName().toString();
-        System.out.println("gegeBVÉDnd´vaisv[asdnv[asdovnEWOBV[dva[eva");
+        
         if(!oldFileName.equals("")){
             String fileName = "/Imagens/Cardapio"+GeradorRandom.geradorCod()+ oldFileName.substring(oldFileName.lastIndexOf("."));//retira a extensão
             InputStream fileContent = userFile.getInputStream();//upafluxo dedados de entradaem bits
