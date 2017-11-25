@@ -385,7 +385,7 @@
                             '</div>'+
                             '<div class="form-group">'+
                                 '<label for="cidade" name="cidade">Cidade</label>'+
-                                '<input type="text" class="form-control" pattern="[a-zA-Z\s]+$" required name="cidade" placeholder="Digite a cidade">'+
+                                '<input type="text" class="form-control" required name="cidade" placeholder="Digite a cidade">'+
                             '</div>'+
                             '<div class="form-group">'+
                                 '<label for="cep" name="cep">CEP</label>'+
@@ -438,7 +438,7 @@
         '</div>'+
         '<div class="back" style="margin-left: 15%;">'+       
             '<form action="<%=request.getContextPath()%>/apagacardapio" method="POST">'+
-               '<input type="hidden" name="id" value="<%= cadaPost.getIdCard()%>">'+
+               '<input type="hidden" name="id" value="<%=cadaPost.getIdCard()%>">'+
                '<button type="submit" class="btn btn-primary" style="background-color: #fe6103; border: none">Apagar</button>'+
             '</form>'+
         '</div>'+
@@ -490,7 +490,7 @@
         '<%for(Pedido cadaPedido : pedido){%>'+
      '<div class="card" style="background-color: #fe6103; border: 0; border-radius: 0; min-width: 22.55%; margin-top: 3%;">'+ 
         '<div class="card-body">'+
-          '<h4 class="card-title">Produto <%= cadaPedido.getIdCardapio()%> | Pedido nº <%= cadaPedido.getIdPedido()%></h4>'+
+          '<h4 class="card-title">Produto <%= cadaPedido.getIdCardapio()%> <br> Pedido nº <%= cadaPedido.getIdPedido()%></h4>'+
           '<p class="card-text">Mesa <%= cadaPedido.getIdMesa()%></p>'+
           '<p class="card-text">Funcionario <%= cadaPedido.getIdFunc()%></p>'+
         '</div>'+       
